@@ -8,6 +8,6 @@ class ContatoController extends Controller
 {
     public function contato()
     {
-        echo 'https://linktr.ee/matheus_sdo/';
+        return view('site.contato');
     }
 }

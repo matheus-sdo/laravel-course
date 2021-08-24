@@ -1,2 +1,2 @@
 <h3>Sobre nós (view)</h3>
-<p>Em construção...</p>
+<p>Então, eu sou o Math! Err... Ainda em construção...</p>
