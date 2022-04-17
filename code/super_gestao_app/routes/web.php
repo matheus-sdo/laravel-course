@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Laravel 8.x
-// Route::get('/', [\App\Http\Controllers\PrincipalController::class, 'principal']);
-
-Route::get('/', 'PrincipalController@principal');
-Route::get('/sobre-nos', 'SobreNosController@sobreNos');
-Route::get('/contato', 'ContatoController@contato');
+Route::get('/', function () {
+    return view('welcome');
+});
