@@ -13,15 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    // return view('welcome');
-    return "Olá, seja bem-vindo ao curso, queridx!";
-});
+Route::get('/', 'PrincipalController@principal');
 
-Route::get('/sobre-nos', function () {
-    return "Somos nós!";
-});
+Route::get('/sobre-nos', 'SobreNosController@sobreNos');
 
-Route::get('/contato', function () {
-    return "Entra em contato ai!";
-});
+Route::get('/contato', 'ContatoController@contato');
