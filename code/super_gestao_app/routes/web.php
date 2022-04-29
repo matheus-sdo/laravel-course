@@ -34,7 +34,7 @@ Route::fallback(
     }
 );
 
-Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('teste');
+Route::get('/teste/{p1}/{p2}', 'TesteController@teste')->name('site.teste');
 
 /* Testes com redirecionamento de rotas
 // Route::get('/rota2', function(){ return redirect()->route('site.rota1'); })->name('site.rota2');
