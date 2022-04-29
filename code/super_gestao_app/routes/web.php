@@ -27,8 +27,21 @@ Route::prefix('/app')->group(
     }
 );
 
-/* Teste com passagem de parãmetros
+Route::fallback(
+    function()
+    {
+        echo 'Ops! A página acessada não existe! <a href="'.route('site.index').'">Clique aqui</a> para ir para a página inicial.';
+    }
+);
 
+/* Testes com redirecionamento de rotas
+Route::get('/rota1', function(){ echo 'Rota 1'; })->name('site.rota1');
+// Route::get('/rota2', function(){ return redirect()->route('site.rota1'); })->name('site.rota2');
+// Route::redirect('/rota2', '/rota1');
+
+*/
+
+/* Teste com passagem de parãmetros
 Route::get(
     '/contato/{nome}/{categoria_id}',
     function(
