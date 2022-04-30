@@ -4,11 +4,11 @@
 
 @endphp
 
+Fornecedor: {{ $fornecedores[0]['nome'] }}
+<br>
+Status: {{ $fornecedores[0]['status']}}
 
-@if (count($fornecedores) && count($fornecedores) < 10)
-    <h3>Existem menos que 10 fornecedores cadastrados</h3>
-@elseif (count($fornecedores) > 10)
-    <h3>Existe mais que 10 fornecedores cadastrados</h3>
-@else
-    <h3>Nenhum fornecedor cadastrado</h3>
-@endif
+{{-- Executa se o retorno da condição for falsa --}}
+@unless($fornecedores[0]['status'] == 'S')
+    <b>(Fornecedor invativo!)</b>
+@endunless
