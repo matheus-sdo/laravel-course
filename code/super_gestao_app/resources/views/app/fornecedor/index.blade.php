@@ -5,13 +5,14 @@
 @endphp
 
 @isset($fornecedores)
-    @php $i = 0 @endphp
-    @while (isset($fornecedores[$i]))
-        <p>Fornecedor: {{ $fornecedores[$i]['nome'] }}</p>
-        <p>Status: {{ $fornecedores[$i]['status']}}</p>
-        <p>CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}</p>
-        <p>Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} {{ $fornecedores[$i]['telefone'] ?? ''}}</p>
+    @forelse ($fornecedores as $key => $fornecedor)
+        <p>Fornecedor: {{ $fornecedor['nome'] }}</p>
+        <p>Status: {{ $fornecedor['status']}}</p>
+        <p>CNPJ: {{ $fornecedor['cnpj'] ?? '' }}</p>
+        <p>Telefone: {{ $fornecedor['ddd'] ?? '' }} {{ $fornecedor['telefone'] ?? ''}}</p>
         <hr/>
-        @php $i++ @endphp
-    @endwhile
+
+    @empty
+        Não existem fornecedores cadastrados.
+    @endforelse
 @endisset
