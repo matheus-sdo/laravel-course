@@ -4,11 +4,12 @@
 
 @endphp
 
-Fornecedor: {{ $fornecedores[0]['nome'] }}
-<br>
-Status: {{ $fornecedores[0]['status']}}
-
-{{-- Executa se o retorno da condição for falsa --}}
-@unless($fornecedores[0]['status'] == 'S')
-    <b>(Fornecedor invativo!)</b>
-@endunless
+@isset($fornecedores)
+    @for($i = 0; isset($fornecedores[$i]); $i++)
+        <p>Fornecedor: {{ $fornecedores[$i]['nome'] }}</p>
+        <p>Status: {{ $fornecedores[$i]['status']}}</p>
+        <p>CNPJ: {{ $fornecedores[$i]['cnpj'] ?? '' }}</p>
+        <p>Telefone: {{ $fornecedores[$i]['ddd'] ?? '' }} {{ $fornecedores[$i]['telefone'] ?? ''}}</p>
+        <hr/>
+    @endfor
+@endisset
