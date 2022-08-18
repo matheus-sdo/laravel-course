@@ -12,11 +12,15 @@ class SiteContatoSeeder extends Seeder
      */
     public function run()
     {
+        /*
         $contato = new SiteContato();
         $contato->nome = "Teste Interno";
         $contato->telefone = "(19) 99999-8888";
         $contato->email = "teste@sg.com";
         $contato->motivo_contato = 1;
         $contato->mensagem = "Olá! Seja bem-vindo!";
+        */
+
+        factory(SiteContato::class, 100)->create();
     }
 }
