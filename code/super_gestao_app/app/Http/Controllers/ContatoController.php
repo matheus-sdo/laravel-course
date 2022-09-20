@@ -19,14 +19,16 @@ class ContatoController extends Controller
         // Validando se os campos do formulário estão preenchidos
         $request->validate(
             [
-                'nome'           => 'required|min:3|max:50',
-                'telefone'       => 'required',
-                'email'          => 'required',
-                'motivo_contato' => 'required',
-                'mensagem'       => 'required|max:2000',
+                'nome'               => 'required|min:3|max:50',
+                'telefone'           => 'required',
+                'email'              => 'email',
+                'motivo_contatos_id' => 'required',
+                'mensagem'           => 'required|max:2000',
             ],
         );
 
-        // SiteContato::create($request->all());
+        SiteContato::create($request->all());
+
+        return redirect()->route('site.index');
     }
 }
