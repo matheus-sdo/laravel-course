@@ -9,7 +9,13 @@ class ContatoController extends Controller
 {
     public function contato(Request $request)
     {
-        return view('site.contato', ['titulo' => 'Contato (teste)']);
+        $motivoContatos = [
+            '1' => 'Dúvida',
+            '2' => 'Elogio',
+            '3' => 'Reclamação'
+        ];
+
+        return view('site.contato', ['titulo' => 'Contato (teste)', 'motivo_contatos' => $motivoContatos]);
     }
 
     public function salvar(Request $request)
@@ -25,6 +31,6 @@ class ContatoController extends Controller
             ],
         );
 
-        SiteContato::create($request->all());
+        // SiteContato::create($request->all());
     }
 }
