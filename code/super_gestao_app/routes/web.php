@@ -16,7 +16,7 @@ use App\Http\Middleware\LogAcessoMiddleware;
 
 Route::middleware(LogAcessoMiddleware::class)->get('/', 'PrincipalController@principal')->name('site.index');
 Route::get('/sobre-nos', 'SobreNosController@sobreNos')->name('site.sobrenos');
-Route::get('/contato', 'ContatoController@contato')->name('site.contato');
+Route::get('/contato', 'ContatoController@contato')->name('site.contato')->middleware(LogAcessoMiddleware::class);
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login', function() { return 'login'; })->name('site.login');
 
