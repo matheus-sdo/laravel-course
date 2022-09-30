@@ -21,7 +21,7 @@ Route::get('/contato', 'ContatoController@contato')->name('site.contato');
 Route::post('/contato', 'ContatoController@salvar')->name('site.contato');
 Route::get('/login', function() { return 'login'; })->name('site.login');
 
-Route::middleware('autenticacao')->prefix('/app')->group(
+Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(
     function()
     {
         Route::get('/clientes', function() { return 'clientes'; })->name('app.clientes');
