@@ -10,4 +10,9 @@ class LoginController extends Controller
     {
         return view('site.login', ['titulo' => 'Login']);
     }
+
+    public function autenticar()
+    {
+        return 'Conseguimos! \õ/';
+    }
 }
