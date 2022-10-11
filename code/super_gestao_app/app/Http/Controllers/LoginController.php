@@ -54,4 +54,9 @@ class LoginController extends Controller
             return redirect()->route('app.clientes');
         }
     }
+
+    public function sair()
+    {
+        return "Sair";
+    }
 }
