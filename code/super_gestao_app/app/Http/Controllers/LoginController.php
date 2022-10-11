@@ -16,7 +16,7 @@ class LoginController extends Controller
         }
 
         if ($request->get('erro') == 2) {
-            $erro = "Necessário login para acessar a página.";
+            $erro = "Necessário realizar login para ter acesso a página.";
         }
 
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
