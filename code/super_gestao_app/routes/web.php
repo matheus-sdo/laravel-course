@@ -30,7 +30,7 @@ Route::middleware('autenticacao:padrao,visitante')->prefix('/app')->group(
         Route::get('/sair', 'LoginController@sair')->name('app.sair');
         Route::get('/cliente', 'ClienteController@index')->name('app.cliente');
         Route::get('/fornecedor', 'FornecedorController@index')->name('app.fornecedor');
-        Route::get('/produto', 'ProdutoController@controller')->name('app.produto');
+        Route::get('/produto', 'ProdutoController@index')->name('app.produto');
     }
 );
 
