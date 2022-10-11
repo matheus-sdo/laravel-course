@@ -11,8 +11,12 @@ class LoginController extends Controller
     {
         $erro = null;
 
-        if ($request->get('erro')) {
+        if ($request->get('erro') == 1) {
             $erro = "Usuário ou senha incorreta.";
+        }
+
+        if ($request->get('erro') == 2) {
+            $erro = "Necessário login para acessar a página.";
         }
 
         return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
