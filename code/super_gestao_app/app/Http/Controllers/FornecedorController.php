@@ -19,6 +19,7 @@ class FornecedorController extends Controller
 
     public function adicionar(Request $request)
     {
+        $msg = '';
         if (!empty($request->input('_token'))) {
             // Validação dos dados
             $regras = [
@@ -41,8 +42,11 @@ class FornecedorController extends Controller
 
             $fornecedor = new Fornecedor();
             $fornecedor->create($request->all());
+
+            // Redirect
+            $msg = "Cadastro realizado com sucesso.";
         }
 
-        return view('app.fornecedor.adicionar');
+        return view('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 }
