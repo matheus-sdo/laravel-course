@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Fornecedor;
 
 class FornecedorController extends Controller
 {
@@ -36,9 +37,10 @@ class FornecedorController extends Controller
                 'email.email' => 'E-mail inválido'
             ];
 
-            $request->valide($regras, $feedback);
+            $request->validate($regras, $feedback);
 
-            echo 'Tudo numa boa, bb';
+            $fornecedor = new Fornecedor();
+            $fornecedor->create($request->all());
         }
 
         return view('app.fornecedor.adicionar');
