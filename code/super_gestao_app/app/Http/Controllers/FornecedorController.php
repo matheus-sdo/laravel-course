@@ -46,13 +46,28 @@ class FornecedorController extends Controller
 
             $request->validate($regras, $feedback);
 
-            $fornecedor = new Fornecedor();
-            $fornecedor->create($request->all());
+            if (empty($request->input('id'))) {
+                $fornecedor = new Fornecedor();
+                $fornecedor->create($request->all());
+                $msg = "Cadastro realizado com sucesso.";
 
-            // Redirect
-            $msg = "Cadastro realizado com sucesso.";
+            } else {
+                $fornecedor = Fornecedor::find($request->input('id'));
+
+                if ($fornecedor->update($request->all())) {
+                    $msg = "Cadastro atualizado com sucesso.";
+                } else {
+                    $msg = "Erro ao atualizar cadastro do fornecedor.";
+                }
+            }
         }
 
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
+    }
+
+    public function editar($id)
+    {
+        $fornecedor = Fornecedor::find($id);
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor]);
     }
 }
