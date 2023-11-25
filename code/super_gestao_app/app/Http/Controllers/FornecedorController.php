@@ -59,15 +59,20 @@ class FornecedorController extends Controller
                 } else {
                     $msg = "Erro ao atualizar cadastro do fornecedor.";
                 }
+
+                return redirect()->route(
+                    'app.fornecedor.editar',
+                    ['msg' => $msg, 'id' => $request->input('id')]
+                );
             }
         }
 
         return view('app.fornecedor.adicionar', ['msg' => $msg]);
     }
 
-    public function editar($id)
+    public function editar($id, $msg = '')
     {
         $fornecedor = Fornecedor::find($id);
-        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor]);
+        return view('app.fornecedor.adicionar', ['fornecedor' => $fornecedor, 'msg' => $msg]);
     }
 }
