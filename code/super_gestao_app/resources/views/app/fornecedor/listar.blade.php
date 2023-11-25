@@ -42,7 +42,7 @@
                     </tbody>
                 </table>
 
-                {{ $fornecedores->links() }}
+                {{ $fornecedores->appends($request)->links() }}
             </div>
         </div>
     </div>

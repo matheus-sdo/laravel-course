@@ -20,7 +20,7 @@ class FornecedorController extends Controller
             ->where('email', 'like', "%".$request->input('email')."%")
             ->paginate(2);
 
-        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores]);
+        return view('app.fornecedor.listar', ['fornecedores' => $fornecedores, 'request' => $request->all()]);
     }
 
     public function adicionar(Request $request)
