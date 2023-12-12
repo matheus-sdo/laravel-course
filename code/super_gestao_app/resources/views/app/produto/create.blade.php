@@ -25,7 +25,7 @@
                     <input type="text" name="descricao" placeholder="Descrição" class="borda-preta"  value="">
                     <input type="text" name="peso" placeholder="Peso" class="borda-preta" value="">
                     <select name="unidade_id">
-                        <option>-- Seelcione a unidade de medida</option>
+                        <option>-- Selecione a unidade --</option>
                         
                         @foreach ($unidades as $unidade)
                             <option value="{{ $unidade->id }}">{{$unidade->descricao}}</option>
