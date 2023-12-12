@@ -18,7 +18,7 @@
         <div class="informacao-pagina">
             {{ $msg ?? '' }}
             <div style="width: 30%; margin: 0 auto;">
-                <form method="post" action="">
+                <form method="post" action="{{ route('produto.store') }}">
                     @csrf
 
                     <input type="text" name="nome" placeholder="Nome" class="borda-preta"  value="">
