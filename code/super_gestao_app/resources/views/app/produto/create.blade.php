@@ -26,7 +26,10 @@
                     <input type="text" name="peso" placeholder="Peso" class="borda-preta" value="">
                     <select name="unidade_id">
                         <option>-- Seelcione a unidade de medida</option>
-                        <option value="1">Unidade 1</option>
+                        
+                        @foreach ($unidades as $unidade)
+                            <option value="{{ $unidade->id }}">{{$unidade->descricao}}</option>
+                        @endforeach
                     </select>
 
                     <button type="submit" class="borda-preta">Cadastrar</button>
