@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProdutoDetalhe;
+use App\Unidade;
 use Illuminate\Http\Request;
 
 class ProdutoDetalheController extends Controller
@@ -24,7 +25,7 @@ class ProdutoDetalheController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.produto_detalhe.create', ['unidades' => Unidade::all()]);
     }
 
     /**
@@ -35,7 +36,8 @@ class ProdutoDetalheController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        ProdutoDetalhe::create($request->all());
+        echo 'Cadastro realizado com sucesso!';
     }
 
     /**
@@ -57,7 +59,7 @@ class ProdutoDetalheController extends Controller
      */
     public function edit(ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        return view('app.produto_detalhe.edit',  ['unidades' => Unidade::all(), 'produto_detalhe' => $produtoDetalhe]);
     }
 
     /**
@@ -69,7 +71,8 @@ class ProdutoDetalheController extends Controller
      */
     public function update(Request $request, ProdutoDetalhe $produtoDetalhe)
     {
-        //
+        $produtoDetalhe->update($request->all());
+        echo 'Atualizado com sucesso!';
     }
 
     /**
