@@ -8,6 +8,23 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+    // Regras de validação das requests de atualização e criação de registros
+    public $regras = [
+        'nome'       => 'required|min:3|max:40',
+        'descricao'  => 'required|min:3|max:2000',
+        'peso'       => 'required|integer',
+        'unidade_id' => 'required|exists:unidades,id',
+    ];
+
+    public $feedback = [
+        'required' => 'O campo :attribute deve ser preenchido',
+        'min' => 'O campo :attribute deve ter no mínimo 3 caracteres',
+        'nome.max' => 'O campo :attribute deve ter no máximo 40 caracteres',
+        'descricao.max' => 'O campo :attribute deve ter no máximo 2000 caracteres',
+        'peso.integer' => 'O campo :attribute deve ser um número inteiro',
+        'unidade_id.exists' => 'A unidade informada não existe',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -39,24 +56,7 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $regras = [
-            'nome'       => 'required|min:3|max:40',
-            'descricao'  => 'required|min:3|max:2000',
-            'peso'       => 'required|integer',
-            'unidade_id' => 'required|exists:unidades,id',
-        ];
-
-        $feedback = [
-            'required' => 'O campo :attribute deve ser preenchido',
-            'min' => 'O campo :attribute deve ter no mínimo 3 caracteres',
-            'nome.max' => 'O campo :attribute deve ter no máximo 40 caracteres',
-            'descricao.max' => 'O campo :attribute deve ter no máximo 2000 caracteres',
-            'peso.integer' => 'O campo :attribute deve ser um número inteiro',
-            'unidade_id.exists' => 'A unidade informada não existe',
-        ];
-
-        $request->validate($regras, $feedback);
-
+        $request->validate($this->regras, $this->feedback);
         Produto::create($request->all());
         return redirect()->route('produto.index');
     }
@@ -81,7 +81,7 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-        return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
@@ -93,6 +93,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, Produto $produto)
     {
+        $request->validate($this->regras, $this->feedback);
         $produto->update($request->all());
         return redirect()->route('produto.show', ['produto' => $produto->id]);
     }
