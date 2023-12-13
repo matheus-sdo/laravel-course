@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Produto;
-use App\ProdutoDetalhe;
+use App\Item;
 use App\Unidade;
 use Illuminate\Http\Request;
 
@@ -33,7 +33,7 @@ class ProdutoController extends Controller
      */
     public function index(Request $request)
     {
-        $produtos = Produto::paginate(10);
+        $produtos = Item::paginate(10);
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
@@ -58,7 +58,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
         $request->validate($this->regras, $this->feedback);
-        Produto::create($request->all());
+        Item::create($request->all());
         return redirect()->route('produto.index');
     }
 
