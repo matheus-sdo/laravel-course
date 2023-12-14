@@ -12,7 +12,7 @@ class ItemDetalhe extends Model
     /**
      * Informando ao Eloquent ORM que este model se relaciona com a tabela Produto
      */
-    public function produto()
+    public function item()
     {
         return $this->belongsTo('App\Item', 'produto_id', 'id');
     }

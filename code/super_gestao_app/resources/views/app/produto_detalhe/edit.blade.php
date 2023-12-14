@@ -16,8 +16,8 @@
 
         <div class="informacao-pagina">
             <h4>Produto</h4>
-            <p>Nome: {{$produto_detalhe->produto->nome}}</p>
-            <p>Descrição: {{$produto_detalhe->produto->descricao}}</p>
+            <p>Nome: {{$produto_detalhe->item->nome ?? ''}}</p>
+            <p>Descrição: {{$produto_detalhe->item->descricao ?? ''}}</p>
 
             {{ $msg ?? '' }}
             <div style="width: 30%; margin: 0 auto;">
