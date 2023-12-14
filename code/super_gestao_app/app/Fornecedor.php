@@ -16,5 +16,12 @@ class Fornecedor extends Model
     // Permitindo que estes parâmetros sejam recebidos pelo método create
     protected $fillable = ['nome', 'site', 'uf', 'email'];
 
-
+    /**
+     * Estabelecendo relacionamento de 1:N com a tabela produtos
+     */
+    public function produtos()
+    {
+        $this->hasMany('App\Item', 'fornecedor_id', 'id');
+        // $this->hasMany('App\Item');
+    }
 }
