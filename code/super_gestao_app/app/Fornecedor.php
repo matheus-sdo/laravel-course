@@ -21,7 +21,7 @@ class Fornecedor extends Model
      */
     public function produtos()
     {
-        $this->hasMany('App\Item', 'fornecedor_id', 'id');
+        return $this->hasMany('App\Item', 'fornecedor_id', 'id');
         // $this->hasMany('App\Item');
     }
 }
