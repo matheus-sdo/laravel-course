@@ -20,7 +20,7 @@
             <div style="width: 30%; margin: 0 auto;">
                 @component(
                     'app.produto._components.form_create_edit',
-                    ['unidades' => $unidades]
+                    ['unidades' => $unidades, 'fornecedores' => $fornecedores]
                 )
                 @endcomponent
             </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Fornecedor;
 use App\Produto;
 use App\Item;
 use App\Unidade;
@@ -45,8 +46,10 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $unidades = Unidade::all();
-        return view('app.produto.create', ['unidades' => $unidades]);
+        return view(
+            'app.produto.create',
+            ['unidades' => Unidade::all(), 'fornecedores' => Fornecedor::all()]
+        );
     }
 
     /**
@@ -81,8 +84,9 @@ class ProdutoController extends Controller
      */
     public function edit(Produto $produto)
     {
-        $unidades = Unidade::all();
-        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        return view('app.produto.edit',
+            ['produto' => $produto, 'unidades' => Unidade::all(), 'fornecedores' => Fornecedor::all()]
+        );
     }
 
     /**
