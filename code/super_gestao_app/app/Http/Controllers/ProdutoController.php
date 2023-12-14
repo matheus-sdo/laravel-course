@@ -12,10 +12,11 @@ class ProdutoController extends Controller
 {
     // Regras de validação das requests de atualização e criação de registros
     public $regras = [
-        'nome'       => 'required|min:3|max:40',
-        'descricao'  => 'required|min:3|max:2000',
-        'peso'       => 'required|integer',
-        'unidade_id' => 'required|exists:unidades,id',
+        'nome'          => 'required|min:3|max:40',
+        'descricao'     => 'required|min:3|max:2000',
+        'peso'          => 'required|integer',
+        'unidade_id'    => 'required|exists:unidades,id',
+        'fornecedor_id' => 'required|exists:fornecedores,id',
     ];
 
     public $feedback = [
@@ -25,6 +26,7 @@ class ProdutoController extends Controller
         'descricao.max' => 'O campo :attribute deve ter no máximo 2000 caracteres',
         'peso.integer' => 'O campo :attribute deve ser um número inteiro',
         'unidade_id.exists' => 'A unidade informada não existe',
+        'fornecedor_id.exists' => 'O fornecedor informada não existe',
     ];
 
     /**
