@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Item extends Model
 {
     protected $table = 'produtos';
-    protected $fillable = ['unidade_id', 'descricao', 'nome', 'peso'];
+    protected $fillable = ['unidade_id', 'descricao', 'nome', 'peso', 'fornecedor_id'];
 
     /**
      * Informando ao Eloquent ORM que um Produto é relacionado à um registro na tabela produto_detalhes
