@@ -17,4 +17,13 @@ class Item extends Model
         // Model de relação, FK na tabela produtos_detalhes, PK na tabela produtos
         return $this->hasOne('App\ItemDetalhe', 'produto_id', 'id');
     }
+
+    /**
+     * Informando ao Eloquent ORM que um produto pertence à um fornecedor
+     */
+    public function fornecedor()
+    {
+        // Model de relação, FK na tabela produtos_detalhes, PK na tabela produtos
+        return $this->belongsTo('App\Fornecedor');
+    }
 }
