@@ -112,7 +112,7 @@ class ProdutoController extends Controller
      * @param  \App\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Produto $produto)
+    public function destroy(ITem $produto)
     {
         $produto->delete();
         return redirect()->route('produto.index');
