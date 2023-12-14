@@ -8,7 +8,7 @@
 @endif
 
 
-        <select name="unidade_id">
+        <select name="fornecedor_id">
             <option>-- Selecione um fornecedor --</option>
 
             @foreach ($fornecedores as $fornecedor)
