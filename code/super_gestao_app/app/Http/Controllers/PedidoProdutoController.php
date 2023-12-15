@@ -9,6 +9,14 @@ use Illuminate\Http\Request;
 
 class PedidoProdutoController extends Controller
 {
+    protected $regras = [
+        'produto_id' => 'exists:produtos,id',
+    ];
+
+    protected $feedback = [
+        'produto_id.exists' => 'O produto inserido não existe.'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +46,14 @@ class PedidoProdutoController extends Controller
      */
     public function store(Request $request, Pedido $pedido)
     {
-                
+        $request->validate($this->regras, $this->feedback);
+
+        $pedidoProduto = new PedidoProduto();
+        $pedidoProduto->pedido_id = $pedido->id;
+        $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->save();
+
+        return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
 
     /**
@@ -49,7 +64,6 @@ class PedidoProdutoController extends Controller
      */
     public function show(PedidoProduto $pedidoProduto)
     {
-        //
     }
 
     /**
