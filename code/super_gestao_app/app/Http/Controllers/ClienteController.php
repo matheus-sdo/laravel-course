@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class ClienteController extends Controller
 {
+    protected $regras = ['nome' => 'required|min:3|max:40'];
+    protected $feedback = [
+        'nome.required' => 'O campo :attribute deve ser preenchido',
+        'nome.min' => 'O campo :attribute deve ter no mínimo 3 caracteres',
+        'nome.max' => 'O campo :attribute deve ter no máximo 40 caracteres',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +44,14 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validando a request
+        $request->validate($this->regras, $this->feedback);
+
+        $cliente = new Cliente();
+        $cliente->nome = $request->get('nome');
+        $cliente->save();
+
+        return redirect()->route('cliente.index');
     }
 
     /**
