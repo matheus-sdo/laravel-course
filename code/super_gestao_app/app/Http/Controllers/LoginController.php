@@ -51,7 +51,7 @@ class LoginController extends Controller
             $_SESSION['nome']  = $usuario->name;
             $_SESSION['email'] = $usuario->email;
 
-            return redirect()->route('app.cliente');
+            return redirect()->route('cliente.index');
         }
     }
 
