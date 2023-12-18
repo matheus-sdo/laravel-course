@@ -26,4 +26,24 @@ class Item extends Model
         // Model de relação, FK na tabela produtos_detalhes, PK na tabela produtos
         return $this->belongsTo('App\Fornecedor');
     }
+
+    /**
+     * Estabelecendo relação N:N no Eloquent ORM com a tabela pedidos
+     */
+    public function pedidos()
+    {
+        /*
+            1. Modelo do relacionamento N:N que se relaciona com a classe Pedido
+            2. Tabela de relacionamento
+            3. A coluna FK da tabela em questão
+            4. A coluna FK da outra tabela que Pedido se relaciona
+        */
+
+        return $this->belongsToMany(
+            'App\Pedido',
+            'pedidos_produtos',
+            'produto_id',
+            'pedido_id'
+        );
+    }
 }
