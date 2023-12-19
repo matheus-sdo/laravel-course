@@ -11,10 +11,12 @@ class PedidoProdutoController extends Controller
 {
     protected $regras = [
         'produto_id' => 'exists:produtos,id',
+        'quantidade' => 'required',
     ];
 
     protected $feedback = [
-        'produto_id.exists' => 'O produto inserido não existe.'
+        'produto_id.exists' => 'O produto inserido não existe.',
+        'required' => 'O campo :attribute deve ser preenchido com um valor válido.',
     ];
 
     /**
@@ -52,6 +54,7 @@ class PedidoProdutoController extends Controller
         $pedidoProduto = new PedidoProduto();
         $pedidoProduto->pedido_id = $pedido->id;
         $pedidoProduto->produto_id = $request->get('produto_id');
+        $pedidoProduto->quantidade = $request->get('quantidade');
         $pedidoProduto->save();
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
