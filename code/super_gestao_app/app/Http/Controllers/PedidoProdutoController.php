@@ -51,11 +51,19 @@ class PedidoProdutoController extends Controller
     {
         $request->validate($this->regras, $this->feedback);
 
-        $pedidoProduto = new PedidoProduto();
-        $pedidoProduto->pedido_id = $pedido->id;
-        $pedidoProduto->produto_id = $request->get('produto_id');
-        $pedidoProduto->quantidade = $request->get('quantidade');
-        $pedidoProduto->save();
+        // $pedidoProduto = new PedidoProduto();
+        // $pedidoProduto->pedido_id = $pedido->id;
+        // $pedidoProduto->produto_id = $request->get('produto_id');
+        // $pedidoProduto->quantidade = $request->get('quantidade');
+        // $pedidoProduto->save();
+
+        // $pedido->produtos
+        // Quando chamamos assim, como retorno os registros do relacionamento. Da forma que está abaixo, é retornado um objeto da relação 
+
+        $pedido->produtos()->attach(
+            $request->get('produto_id'),
+            ['quantidade' => $request->get('quantidade')]
+        );
 
         return redirect()->route('pedido-produto.create', ['pedido' => $pedido->id]);
     }
