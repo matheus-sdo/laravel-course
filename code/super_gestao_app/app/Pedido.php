@@ -24,6 +24,6 @@ class Pedido extends Model
             'pedidos_produtos',
             'pedido_id',
             'produto_id'
-        );
+        )->withPivot('created_at');
     }
 }
